@@ -6,6 +6,9 @@ RUN sudo dpkg -i cdh5-repository_1.0_all.deb
 RUN sudo apt-get update
 RUN sudo apt-get -y install hive-server2 
 
+ADD hive-site.xml /etc/hive/conf/
+
 EXPOSE 10000
 
-CMD ["/bin/bash"]
+CMD ["/etc/init.d/hive-server2 start"]
+
