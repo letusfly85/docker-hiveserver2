@@ -22,6 +22,8 @@ RUN /etc/init.d/mysql start && \
     mysql -u root < /tmp/create_database.sql
 
 ADD hive-site.xml /etc/hive/conf/
+RUN mkdir -p /user/hive/warehouse/ && \
+    chown -R hive /user/hive
 
 RUN apt-get -y install python-setuptools
 RUN easy_install supervisor
